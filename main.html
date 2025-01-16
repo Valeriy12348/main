@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main - Online Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            flex-direction: column;
+        }
+
+        /* Стиль для изображения вверху */
+        .header-image {
+            width: 100%;
+            height: 250px;
+            background-image: url('logo.png'); /* Замените на нужное изображение */
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 25px; /* Отступ снизу для текста и кнопок */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px; /* Сокращен отступ */
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .button {
+            background-color: #e91e63;
+            color: #fff;
+            font-size: 18px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            text-align: center;
+            width: 200px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #d81b60;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Добавление изображения вверху -->
+<div class="header-image"></div>
+
+<h1>Sklep Najlepszych Towarów</h1>
+
+<div class="buttons">
+    <a href="tablets.html" class="button">Tablets</a>
+    <a href="index.html" class="button">Phones</a>
+    <a href="laptops.html" class="button">Laptops</a>
+    <a href="computers.html" class="button">Computers</a>
+    <a href="fridges.html" class="button">Fridges</a>
+    <a href="headphones.html" class="button">Headphones</a>
+</div>
+
+</body>
+</html>

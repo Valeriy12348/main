@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koszyk</title>
+    <style>
+        /* Используем такие же стили, как на главной странице */
+        body {
+            background-color: #333333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .cart {
+            background-color: #cccccc;
+            width: 90%;
+            max-height: 90vh;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            background-color: #ffffff;
+            color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item .remove-item {
+            cursor: pointer;
+            color: #e91e63;
+        }
+
+        .clear-cart {
+            background-color: #e91e63;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .back-to-shop {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Koszyk</h1>
+
+<!-- Кнопка "Вернуться в магазин" -->
+<a href="main.html" class="back-to-shop">powrót do sklepu</a>
+
+<div class="cart" id="cart">
+    <!-- Здесь будут отображаться товары корзины -->
+</div>
+
+<!-- Кнопка для очистки корзины -->
+<button class="clear-cart" onclick="clearCart()">opróżnić kosz</button>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Отображение товаров в корзине
+    function renderCart() {
+        const cartContainer = document.getElementById('cart');
+        cartContainer.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML = '<p>Koszyk jest pusty</p>';
+        } else {
+            cart.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <span>${item.product} - $${item.price}</span>
+                    <span class="remove-item" onclick="removeItem(${index})">❌</span>
+                `;
+                cartContainer.appendChild(itemDiv);
+            });
+        }
+    }
+
+    // Удаление товара из корзины
+    function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+    }
+
+    // Очистка всей корзины
+    function clearCart() {
+        cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+    }
+
+    // Инициализация
+    renderCart();
+</script>
+
+</body>
+</html>
+
